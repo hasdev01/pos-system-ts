@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import {
   Card, Row, Col, Typography, Tag, Button, Table, Tabs, Progress,
-  Statistic, Space, Modal, Input, Select, Alert, Divider, Badge,
+  Space, Modal, Input, Select, Alert, Divider, Badge,
 } from 'antd'
 import {
-  WalletOutlined, SwapOutlined, SendOutlined, DownloadOutlined,
+  SwapOutlined, SendOutlined, DownloadOutlined,
   RiseOutlined, SafetyOutlined, GlobalOutlined, ThunderboltOutlined,
   CopyOutlined, CheckCircleOutlined, ClockCircleOutlined, LinkOutlined,
 } from '@ant-design/icons'

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
   Card, Row, Col, Typography, Tag, Button, Table, Steps, Input,
-  Select, Alert, Statistic, Progress, Space, Divider, Timeline,
+  Alert, Statistic, Progress, Space, Divider, Timeline,
 } from 'antd'
 import {
   SendOutlined, GlobalOutlined, CheckCircleOutlined, ClockCircleOutlined,

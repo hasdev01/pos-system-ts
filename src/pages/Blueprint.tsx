@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Card, Tag, Badge, Steps, Timeline, Table, Progress, Tabs, Typography,
   Row, Col, Divider, Alert, Statistic, Space, Button, List,
 } from 'antd'
 import {
   CheckCircleOutlined, CloseCircleOutlined, RocketOutlined,
-  GlobalOutlined, SafetyCertificateOutlined, ThunderboltOutlined,
-  BankOutlined, TeamOutlined, CodeOutlined, DollarOutlined,
-  ApiOutlined, CloudOutlined, LockOutlined, StarOutlined,
+  GlobalOutlined, ThunderboltOutlined,
 } from '@ant-design/icons'
 
 const { Title, Text, Paragraph } = Typography
@@ -189,7 +187,7 @@ function CurrentStatus(): React.ReactElement {
         ))}
       </Row>
 
-      <Divider orientation="left">
+      <Divider>
         <Text style={{ color: '#ff4d4f', fontWeight: 700, fontSize: 14 }}>⚠️ NOT BUILT YET — Critical for Indus Nexus Launch</Text>
       </Divider>
 
@@ -380,11 +378,11 @@ function StablecoinFlow(): React.ReactElement {
               pagination={false}
               size="small"
               rowClassName={(r: { speed: string }) => r.speed === 'fast' ? 'nexus-row' : ''}
-              rowStyle={(r: { speed: string }) =>
-                r.speed === 'fast'
+              onRow={(r: { speed: string }) => ({
+                style: r.speed === 'fast'
                   ? { background: 'rgba(250,173,20,0.08)', fontWeight: 700 }
-                  : {}
-              }
+                  : {},
+              })}
             />
           </Card>
         </Col>
@@ -1352,8 +1350,8 @@ function CompetitiveTable(): React.ReactElement {
           pagination={false}
           size="middle"
           bordered
-          rowStyle={(_record: object, index: number) => ({
-            background: index % 2 === 0 ? '#fafafa' : '#fff',
+          onRow={(_record: object, index?: number) => ({
+            style: { background: (index ?? 0) % 2 === 0 ? '#fafafa' : '#fff' },
           })}
         />
         <div style={{ marginTop: 16, padding: '0 8px' }}>
