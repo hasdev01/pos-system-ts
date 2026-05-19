@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indus Nexus — Complete Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#060912;--bg2:#0d1117;--bg3:#111827;--bg4:#1a2235;
+  --gold:#f59e0b;--gold2:#fbbf24;--teal:#06b6d4;--teal2:#22d3ee;
+  --green:#10b981;--purple:#8b5cf6;--red:#ef4444;--blue:#3b82f6;
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --border:rgba(255,255,255,0.07);--card:rgba(255,255,255,0.03);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,9,18,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 32px;gap:8px;flex-wrap:nowrap;overflow-x:auto}
+nav a{color:var(--text2);text-decoration:none;font-size:12px;font-weight:500;padding:6px 12px;border-radius:6px;white-space:nowrap;transition:all 0.2s}
+nav a:hover,nav a.active{color:var(--gold);background:rgba(245,158,11,0.1)}
+.nav-logo{font-size:15px;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-right:16px;white-space:nowrap}
+
+/* SECTIONS */
+section{padding:100px 0 80px;max-width:1280px;margin:0 auto;padding-left:40px;padding-right:40px}
+
+/* HERO */
+#hero{padding-top:140px;text-align:center;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(245,158,11,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--gold);padding:8px 20px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:32px}
+.hero-badge span{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
+h1{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.05;margin-bottom:24px}
+h1 .g1{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 .g2{background:linear-gradient(135deg,var(--teal),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:18px;color:var(--text2);max-width:700px;margin:0 auto 48px;line-height:1.7}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.stat{text-align:center}
+.stat-num{font-size:36px;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:13px;color:var(--text3);margin-top:4px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;border:none;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#d97706);color:#000}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,0.4)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text);backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+
+/* SECTION TITLE */
+.sec-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:var(--gold);padding:4px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.sec-title{font-size:clamp(24px,3vw,40px);font-weight:800;margin-bottom:12px}
+.sec-sub{color:var(--text2);font-size:16px;line-height:1.6;max-width:600px;margin-bottom:48px}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all 0.3s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0}
+.card:hover{border-color:rgba(245,158,11,0.3);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.card:hover::before{opacity:1}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+/* STATUS */
+#status .status-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){#status .status-grid{grid-template-columns:1fr}}
+.status-col{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px}
+.status-col.done{border-color:rgba(16,185,129,0.3)}
+.status-col.pending{border-color:rgba(245,158,11,0.3)}
+.status-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.status-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.status-icon.green{background:rgba(16,185,129,0.15)}
+.status-icon.amber{background:rgba(245,158,11,0.15)}
+.status-title{font-size:18px;font-weight:700}
+.item-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.item-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.5}
+.item-list li::before{content:'';width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;margin-top:1px}
+.item-list.done li::before{content:'✓';background:rgba(16,185,129,0.15);color:var(--green)}
+.item-list.pending li::before{content:'→';background:rgba(245,158,11,0.1);color:var(--gold)}
+
+/* STABLECOIN FLOW */
+#stablecoin .flow-wrapper{position:relative;padding:40px 0}
+.flow-steps{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding-bottom:20px}
+.flow-step{flex:1;min-width:160px;position:relative}
+.flow-step-inner{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 16px;text-align:center;height:100%;transition:all 0.3s;margin:0 4px}
+.flow-step-inner:hover{border-color:var(--teal);transform:translateY(-4px)}
+.flow-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px}
+.flow-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.flow-val{font-size:13px;color:var(--text);font-weight:600;line-height:1.4}
+.flow-sub{font-size:11px;color:var(--text3);margin-top:4px}
+.flow-connector{display:flex;align-items:center;justify-content:center;min-width:32px;position:relative;z-index:1}
+.flow-connector::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--blue));transform:translateY(-50%)}
+.flow-arrow{background:var(--bg);color:var(--teal);font-size:16px;z-index:2;padding:0 4px}
+.flow-compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.compare-box{border-radius:16px;padding:24px;text-align:center}
+.compare-box.old{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25)}
+.compare-box.new{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25)}
+.compare-price{font-size:48px;font-weight:900;margin:8px 0}
+.compare-box.old .compare-price{color:var(--red)}
+.compare-box.new .compare-price{color:var(--green)}
+
+/* PHASE ROADMAP — MIND MAP */
+#roadmap .phase-container{position:relative;padding:20px 0}
+.phase-track{position:relative}
+.phase-track::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--teal),var(--purple));transform:translateX(-50%);border-radius:2px}
+@media(max-width:768px){.phase-track::before{left:24px}}
+.phase-item{display:flex;gap:40px;align-items:flex-start;margin-bottom:48px;position:relative}
+.phase-item:nth-child(even){flex-direction:row-reverse}
+@media(max-width:768px){.phase-item,.phase-item:nth-child(even){flex-direction:row;gap:20px}}
+.phase-content{flex:1;max-width:calc(50% - 60px)}
+@media(max-width:768px){.phase-content{max-width:calc(100% - 60px)}}
+.phase-node{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;flex-shrink:0;position:relative;z-index:2;margin-top:8px;border:3px solid var(--bg)}
+.phase-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all 0.3s}
+.phase-card:hover{transform:scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
+.phase-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.phase-name{font-size:18px;font-weight:800;margin-bottom:8px}
+.phase-timeline{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.phase-tasks{list-style:none;display:flex;flex-direction:column;gap:6px}
+.phase-tasks li{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:8px}
+.phase-tasks li::before{content:'▸';color:var(--gold);font-size:10px}
+.phase-cost{font-size:12px;font-weight:700;margin-top:12px;padding:6px 12px;border-radius:8px;display:inline-block}
+
+/* CORRIDORS */
+.corridor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:48px}
+.corridor-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;transition:all 0.3s;cursor:pointer}
+.corridor-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.corridor-flag{font-size:36px;margin-bottom:10px}
+.corridor-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.corridor-fee{font-size:22px;font-weight:900;color:var(--green);margin:8px 0}
+.corridor-time{font-size:12px;color:var(--text3)}
+.corridor-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;margin-top:8px}
+
+/* WHERE TO APPLY */
+.apply-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all 0.3s}
+.apply-card:hover{border-color:var(--purple);transform:translateY(-3px)}
+.apply-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.apply-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.apply-title{font-size:15px;font-weight:700}
+.apply-category{font-size:11px;color:var(--text3);margin-top:2px}
+.apply-steps{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.apply-steps li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);line-height:1.5}
+.step-num{width:22px;height:22px;border-radius:6px;background:rgba(139,92,246,0.15);color:var(--purple);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.apply-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--teal);text-decoration:none;padding:6px 14px;border:1px solid rgba(6,182,212,0.3);border-radius:8px;transition:all 0.2s}
+.apply-link:hover{background:rgba(6,182,212,0.1);transform:translateX(2px)}
+.apply-cost{font-size:12px;color:var(--text3);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* TECH STACK */
+.stack-layers{display:flex;flex-direction:column;gap:12px}
+.layer{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:all 0.3s}
+.layer-header{padding:16px 24px;display:flex;align-items:center;gap:16px;cursor:pointer;user-select:none}
+.layer-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.layer-title{font-size:14px;font-weight:700;flex:1}
+.layer-tags{display:flex;gap:6px;flex-wrap:wrap}
+.layer-body{padding:0 24px 20px;display:none}
+.layer.open .layer-body{display:block}
+.layer.open .layer-toggle{transform:rotate(180deg)}
+.layer-toggle{color:var(--text3);transition:transform 0.2s;font-size:12px}
+.tech-tag{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text2);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;margin:3px}
+.tech-tag:hover{border-color:var(--teal);color:var(--teal)}
+
+/* LEGAL */
+.legal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.legal-card{border-radius:16px;padding:24px;border:1px solid var(--border)}
+.legal-flag{font-size:28px;margin-bottom:12px}
+.legal-country{font-size:16px;font-weight:800;margin-bottom:4px}
+.legal-items{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.legal-items li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.legal-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px}
+
+/* REVENUE */
+.revenue-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.rev-card{border-radius:14px;padding:24px;text-align:center;border:1px solid var(--border);background:var(--card)}
+.rev-icon{font-size:32px;margin-bottom:12px}
+.rev-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.rev-amount{font-size:26px;font-weight:900;color:var(--green);margin:8px 0}
+.rev-period{font-size:12px;color:var(--text3)}
+
+/* INSTALL */
+.install-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.tab-btn{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text2);transition:all 0.2s}
+.tab-btn.active{background:rgba(245,158,11,0.1);border-color:var(--gold);color:var(--gold)}
+.code-block{background:#0d1117;border:1px solid var(--border);border-radius:12px;padding:24px;font-family:'Fira Code',monospace;font-size:13px;line-height:1.7;color:#e2e8f0;position:relative;overflow-x:auto;display:none}
+.code-block.active{display:block}
+.code-block .comment{color:#64748b}
+.code-block .cmd{color:#06b6d4}
+.copy-btn{position:absolute;top:16px;right:16px;padding:6px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text2);border-radius:8px;font-size:12px;cursor:pointer;transition:all 0.2s}
+.copy-btn:hover{background:rgba(245,158,11,0.1);border-color:var(--gold);color:var(--gold)}
+
+/* TABLE */
+.table-wrapper{overflow-x:auto;border-radius:16px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+thead{background:rgba(245,158,11,0.08)}
+th{padding:14px 20px;text-align:left;font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+td{padding:14px 20px;font-size:13px;color:var(--text2);border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,0.02);color:var(--text)}
+.win{color:var(--green);font-weight:700}
+.mid{color:var(--gold)}
+.lose{color:var(--red)}
+
+/* FOOTER */
+footer{text-align:center;padding:60px 40px;border-top:1px solid var(--border);color:var(--text3)}
+footer strong{color:var(--gold)}
+
+/* SCROLL PROGRESS */
+#progress{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal));width:0%;z-index:999;transition:width 0.1s}
+
+/* BADGE COLORS */
+.badge{display:inline-flex;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700}
+.badge-green{background:rgba(16,185,129,0.15);color:var(--green)}
+.badge-amber{background:rgba(245,158,11,0.1);color:var(--gold)}
+.badge-red{background:rgba(239,68,68,0.1);color:var(--red)}
+.badge-blue{background:rgba(59,130,246,0.1);color:var(--blue)}
+.badge-purple{background:rgba(139,92,246,0.1);color:var(--purple)}
+.badge-teal{background:rgba(6,182,212,0.1);color:var(--teal)}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:40px 0}
+
+/* RESPONSIVE */
+@media(max-width:640px){section{padding:80px 20px 60px}.flow-compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">⬡ INDUS NEXUS</span>
+  <a href="#hero" class="active">Home</a>
+  <a href="#status">Status</a>
+  <a href="#stablecoin">Stablecoin</a>
+  <a href="#roadmap">Roadmap</a>
+  <a href="#corridors">Corridors</a>
+  <a href="#apply">Apply</a>
+  <a href="#techstack">Tech Stack</a>
+  <a href="#legal">Legal</a>
+  <a href="#revenue">Revenue</a>
+  <a href="#install">Install</a>
+  <a href="#compare">Compare</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><span></span>Pakistan's First Hybrid Digital Bank + VASP — Blueprint 2026</div>
+  <h1><span class="g1">Indus Nexus</span><br><span class="g2">Complete Product Blueprint</span></h1>
+  <p class="hero-sub">Pakistan's first regulated hybrid digital bank combining real-time payments, cross-border stablecoin remittance, Sharia-compliant finance, and PVARA-licensed virtual assets — from $0 to Unicorn.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">$32B</div><div class="stat-label">Pakistan Remittance Market</div></div>
+    <div class="stat"><div class="stat-num">$1</div><div class="stat-label">vs $32 Traditional Fee</div></div>
+    <div class="stat"><div class="stat-num">47s</div><div class="stat-label">Cross-Border Transfer Time</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">PVARA License Categories</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Country Corridors</div></div>
+  </div>
+  <div class="hero-btns">
+    <a href="#roadmap" class="btn btn-gold">🗺 View Phase Roadmap</a>
+    <a href="#apply" class="btn btn-outline">📋 Where to Apply</a>
+    <a href="#stablecoin" class="btn btn-outline">₿ Stablecoin Flow</a>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section id="status">
+  <div class="sec-tag">📊 Current State</div>
+  <h2 class="sec-title">What's Built vs What's Pending</h2>
+  <p class="sec-sub">Phase 0 (demo) is running. All core infrastructure is static/mock. Real integrations begin Phase 1.</p>
+  <div class="status-grid">
+    <div class="status-col done">
+      <div class="status-header">
+        <div class="status-icon green">✅</div>
+        <div class="status-title" style="color:var(--green)">Completed — Demo Ready</div>
+      </div>
+      <ul class="item-list done">
+        <li>React 19 + TypeScript frontend (Vite + Ant Design 6)</li>
+        <li>Multi-role auth: Admin / Manager / Cashier</li>
+        <li>POS Terminal with product catalog + cart</li>
+        <li>Inventory management with stock tracking</li>
+        <li>Sales & orders with payment modal</li>
+        <li>HRMS: Employees, Attendance, Payroll, Roles</li>
+        <li>ERP: Revenue, Expenses, Cash Ledger, Banks</li>
+        <li>Multi-location support with location switcher</li>
+        <li>FBR / Tax module (Taxpayers UI)</li>
+        <li>Static Raast QR + JazzCash + EasyPaisa UI</li>
+        <li>Reports with Recharts charts</li>
+        <li>This Blueprint page (visual presenter)</li>
+      </ul>
+    </div>
+    <div class="status-col pending">
+      <div class="status-header">
+        <div class="status-icon amber">⏳</div>
+        <div class="status-title" style="color:var(--gold)">Pending — Production Build</div>
+      </div>
+      <ul class="item-list pending">
+        <li>NestJS backend (PostgreSQL + Prisma + Redis)</li>
+        <li>Real JWT auth with refresh tokens</li>
+        <li>JazzCash / EasyPaisa live payment integration</li>
+        <li>Raast P2M via 1Link API (real QR codes)</li>
+        <li>USDC wallet + Solana blockchain engine</li>
+        <li>Cross-border remittance (UAE → Pakistan 47s)</li>
+        <li>NADRA KYC + SECP KYB integration</li>
+        <li>AML: Chainalysis + Comply Advantage</li>
+        <li>FATF Travel Rule via Notabene.id</li>
+        <li>PVARA license application + approval</li>
+        <li>Sharia Supervisory Board setup</li>
+        <li>UAE / UK / USA corridor live integrations</li>
+        <li>AI credit scoring + fraud detection</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STABLECOIN FLOW -->
+<section id="stablecoin">
+  <div class="sec-tag">₿ Blockchain</div>
+  <h2 class="sec-title">Stablecoin Cross-Border Flow</h2>
+  <p class="sec-sub">How $100 travels from Dubai to Lahore in 47 seconds via USDC on Solana — at $1 flat fee vs $32 traditional.</p>
+
+  <div class="flow-wrapper">
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(245,158,11,0.15)">🇦🇪</div>
+          <div class="flow-label">Sender</div>
+          <div class="flow-val">Dubai App</div>
+          <div class="flow-sub">AED → USD</div>
+        </div>
+      </div>
+      <div class="flow-connector"><span class="flow-arrow">▶</span></div>
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(239,68,68,0.15)">🛡</div>
+          <div class="flow-label">Compliance</div>
+          <div class="flow-val">AML + KYC</div>
+          <div class="flow-sub">Chainalysis + OFAC</div>
+        </div>
+      </div>
+      <div class="flow-connector"><span class="flow-arrow">▶</span></div>
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(6,182,212,0.15)">⬡</div>
+          <div class="flow-label">Blockchain</div>
+          <div class="flow-val">USD → USDC</div>
+          <div class="flow-sub">Circle API mint</div>
+        </div>
+      </div>
+      <div class="flow-connector"><span class="flow-arrow">▶</span></div>
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(59,130,246,0.15)">⚡</div>
+          <div class="flow-label">Solana</div>
+          <div class="flow-val">400ms Transfer</div>
+          <div class="flow-sub">$0.0001 gas fee</div>
+        </div>
+      </div>
+      <div class="flow-connector"><span class="flow-arrow">▶</span></div>
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(139,92,246,0.15)">🏦</div>
+          <div class="flow-label">PVARA VASP</div>
+          <div class="flow-val">Pakistan Node</div>
+          <div class="flow-sub">USDC received</div>
+        </div>
+      </div>
+      <div class="flow-connector"><span class="flow-arrow">▶</span></div>
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(16,185,129,0.15)">💱</div>
+          <div class="flow-label">Convert</div>
+          <div class="flow-val">USDC → PKR</div>
+          <div class="flow-sub">Live SBP rate</div>
+        </div>
+      </div>
+      <div class="flow-connector"><span class="flow-arrow">▶</span></div>
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(16,185,129,0.15)">📡</div>
+          <div class="flow-label">Raast</div>
+          <div class="flow-val">PKR Rail</div>
+          <div class="flow-sub">1Link ISO 20022</div>
+        </div>
+      </div>
+      <div class="flow-connector"><span class="flow-arrow">▶</span></div>
+      <div class="flow-step">
+        <div class="flow-step-inner">
+          <div class="flow-icon" style="background:rgba(245,158,11,0.15)">🇵🇰</div>
+          <div class="flow-label">Recipient</div>
+          <div class="flow-val">Gets PKR</div>
+          <div class="flow-sub">Any PK bank/wallet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-compare">
+    <div class="compare-box old">
+      <div style="font-size:13px;color:var(--text3);font-weight:600;letter-spacing:1px;text-transform:uppercase">Traditional Wire</div>
+      <div class="compare-price">$32</div>
+      <div style="font-size:14px;color:var(--text2)">Fee per $100 transfer</div>
+      <div style="margin-top:12px;font-size:13px;color:var(--text3)">⏱ 3-5 business days<br>🏦 Western Union / Remitly<br>📉 Hidden FX markup</div>
+    </div>
+    <div class="compare-box new">
+      <div style="font-size:13px;color:var(--text3);font-weight:600;letter-spacing:1px;text-transform:uppercase">Indus Nexus</div>
+      <div class="compare-price">$1</div>
+      <div style="font-size:14px;color:var(--text2)">Flat fee any amount</div>
+      <div style="margin-top:12px;font-size:13px;color:var(--text3)">⚡ 47 seconds<br>⬡ USDC on Solana<br>🔒 SBP + PVARA regulated</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;background:var(--card);border:1px solid rgba(6,182,212,0.3);border-radius:16px;padding:24px">
+    <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px">🔑 Key Technologies</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span class="badge badge-teal">USDC (Circle)</span>
+      <span class="badge badge-teal">USD1 (World Liberty)</span>
+      <span class="badge badge-blue">Solana @solana/web3.js</span>
+      <span class="badge badge-purple">Privy.io MPC Wallets</span>
+      <span class="badge badge-purple">Fireblocks (scale)</span>
+      <span class="badge badge-amber">Notabene FATF Travel Rule</span>
+      <span class="badge badge-red">Chainalysis KYT</span>
+      <span class="badge badge-green">Raast P2M (1Link)</span>
+      <span class="badge badge-green">BullMQ Job Queue</span>
+      <span class="badge badge-blue">Helius RPC (Solana)</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE ROADMAP MIND MAP -->
+<section id="roadmap">
+  <div class="sec-tag">🗺 Phases</div>
+  <h2 class="sec-title">Development Roadmap</h2>
+  <p class="sec-sub">9 phases from demo polish to full fintech unicorn — each phase connected, each building on the last.</p>
+
+  <div class="phase-track">
+
+    <div class="phase-item">
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(16,185,129,0.4)">
+          <div class="phase-num" style="color:var(--green)">PHASE 0</div>
+          <div class="phase-name">Demo Polish</div>
+          <span class="phase-timeline" style="background:rgba(16,185,129,0.1);color:var(--green)">⚡ This Week — 0 Cost</span>
+          <ul class="phase-tasks">
+            <li>Zustand state migration (data survives refresh)</li>
+            <li>Export buttons → real Excel + PDF files</li>
+            <li>Print receipt → browser print</li>
+            <li>Static Stablecoin Wallet screen</li>
+            <li>Live PKR/USD rate (CoinGecko free)</li>
+            <li>Raast QR code in POS modal</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(16,185,129,0.1);color:var(--green)">💰 $0 / month</div>
+        </div>
+      </div>
+      <div class="phase-node" style="background:linear-gradient(135deg,var(--green),#059669)">0</div>
+      <div class="phase-content"></div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content"></div>
+      <div class="phase-node" style="background:linear-gradient(135deg,var(--blue),#1d4ed8)">1</div>
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(59,130,246,0.4)">
+          <div class="phase-num" style="color:var(--blue)">PHASE 1</div>
+          <div class="phase-name">Backend Foundation</div>
+          <span class="phase-timeline" style="background:rgba(59,130,246,0.1);color:var(--blue)">📅 Month 1-2</span>
+          <ul class="phase-tasks">
+            <li>NestJS + Prisma + PostgreSQL setup</li>
+            <li>JWT auth with refresh tokens + bcrypt</li>
+            <li>Products, Inventory, Orders APIs</li>
+            <li>Connect React frontend → NestJS</li>
+            <li>Deploy: Railway + Vercel + Supabase</li>
+            <li>GitHub Actions CI/CD pipeline</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(59,130,246,0.1);color:var(--blue)">💰 $0-50 / month</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(6,182,212,0.4)">
+          <div class="phase-num" style="color:var(--teal)">PHASE 2</div>
+          <div class="phase-name">Pakistan Payments</div>
+          <span class="phase-timeline" style="background:rgba(6,182,212,0.1);color:var(--teal)">📅 Month 2-4</span>
+          <ul class="phase-tasks">
+            <li>JazzCash gateway (HMAC-SHA256)</li>
+            <li>EasyPaisa gateway (MD5 auth)</li>
+            <li>Raast P2M via 1Link (dynamic QR)</li>
+            <li>Safepay card payments (PCI DSS)</li>
+            <li>Webhook handlers all payment methods</li>
+            <li>FBR PRAL API auto tax filing</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(6,182,212,0.1);color:var(--teal)">💰 $50-100 / month</div>
+        </div>
+      </div>
+      <div class="phase-node" style="background:linear-gradient(135deg,var(--teal),#0891b2)">2</div>
+      <div class="phase-content"></div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content"></div>
+      <div class="phase-node" style="background:linear-gradient(135deg,#a855f7,#7c3aed)">3</div>
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(168,85,247,0.4)">
+          <div class="phase-num" style="color:#a855f7">PHASE 3</div>
+          <div class="phase-name">HRMS + ERP Backend</div>
+          <span class="phase-timeline" style="background:rgba(168,85,247,0.1);color:#a855f7">📅 Month 3-5</span>
+          <ul class="phase-tasks">
+            <li>Employees CRUD API</li>
+            <li>Attendance check-in/check-out</li>
+            <li>Payroll engine (EOBI + PESSI + tax)</li>
+            <li>Revenue + Expense tracking APIs</li>
+            <li>Cash Ledger real running balance</li>
+            <li>FBR auto-filing integration</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(168,85,247,0.1);color:#a855f7">💰 $50-150 / month</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(245,158,11,0.4)">
+          <div class="phase-num" style="color:var(--gold)">PHASE 4</div>
+          <div class="phase-name">Wallets + Stablecoin</div>
+          <span class="phase-timeline" style="background:rgba(245,158,11,0.1);color:var(--gold)">📅 Month 5-8</span>
+          <ul class="phase-tasks">
+            <li>Multi-currency wallets (PKR + USDC)</li>
+            <li>Double-entry ledger (immutable)</li>
+            <li>Circle API (USDC mint/burn)</li>
+            <li>Solana client + SPL token transfers</li>
+            <li>Privy.io MPC wallet custody</li>
+            <li>BullMQ async blockchain jobs</li>
+            <li>Remittance orchestration (47s flow)</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(245,158,11,0.1);color:var(--gold)">💰 $200-500 / month</div>
+        </div>
+      </div>
+      <div class="phase-node" style="background:linear-gradient(135deg,var(--gold),#d97706)">4</div>
+      <div class="phase-content"></div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content"></div>
+      <div class="phase-node" style="background:linear-gradient(135deg,var(--red),#b91c1c)">5</div>
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(239,68,68,0.4)">
+          <div class="phase-num" style="color:var(--red)">PHASE 5</div>
+          <div class="phase-name">Compliance Engine</div>
+          <span class="phase-timeline" style="background:rgba(239,68,68,0.1);color:var(--red)">📅 Month 7-10</span>
+          <ul class="phase-tasks">
+            <li>Comply Advantage (sanctions screening)</li>
+            <li>Elliptic / Chainalysis blockchain AML</li>
+            <li>Notabene FATF Travel Rule</li>
+            <li>Transaction monitoring rules engine</li>
+            <li>STR filing workflow (FIU Pakistan)</li>
+            <li>NADRA Nishaan KYC integration</li>
+            <li>SECP eZfile KYB integration</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(239,68,68,0.1);color:var(--red)">💰 $700-2,500 / month</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(16,185,129,0.4)">
+          <div class="phase-num" style="color:var(--green)">PHASE 6</div>
+          <div class="phase-name">Legal + Licensing</div>
+          <span class="phase-timeline" style="background:rgba(16,185,129,0.1);color:var(--green)">📅 Month 6-12 (Parallel)</span>
+          <ul class="phase-tasks">
+            <li>SECP Pvt. Ltd. incorporation</li>
+            <li>FBR NTN + STRN registration</li>
+            <li>Meezan Bank corporate account</li>
+            <li>PVARA NOC + 5 license categories</li>
+            <li>MLRO appointment (full-time)</li>
+            <li>Sharia Supervisory Board (3 scholars)</li>
+            <li>DIFC Dubai license application</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(16,185,129,0.1);color:var(--green)">💰 PKR 5-15M one-time</div>
+        </div>
+      </div>
+      <div class="phase-node" style="background:linear-gradient(135deg,var(--green),#059669)">6</div>
+      <div class="phase-content"></div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content"></div>
+      <div class="phase-node" style="background:linear-gradient(135deg,#f97316,#c2410c)">7</div>
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(249,115,22,0.4)">
+          <div class="phase-num" style="color:#f97316">PHASE 7</div>
+          <div class="phase-name">International Corridors</div>
+          <span class="phase-timeline" style="background:rgba(249,115,22,0.1);color:#f97316">📅 Month 10-18</span>
+          <ul class="phase-tasks">
+            <li>UAE: Al Ansari Exchange API</li>
+            <li>Saudi: STC Pay / Al Rajhi</li>
+            <li>UK: Currencycloud API (FCA licensed)</li>
+            <li>Canada: Wise Business API</li>
+            <li>USA: Circle USDC direct</li>
+            <li>WhatsApp Business all corridors</li>
+            <li>Multi-language UI (Arabic, Urdu, EN)</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(249,115,22,0.1);color:#f97316">💰 $15,000-50,000 setup</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-content">
+        <div class="phase-card" style="border-color:rgba(139,92,246,0.4)">
+          <div class="phase-num" style="color:var(--purple)">PHASE 8</div>
+          <div class="phase-name">AI + ML Layer</div>
+          <span class="phase-timeline" style="background:rgba(139,92,246,0.1);color:var(--purple)">📅 Month 12-18</span>
+          <ul class="phase-tasks">
+            <li>Python FastAPI ML microservice</li>
+            <li>Credit scoring (train on Raast data)</li>
+            <li>Fraud detection (Isolation Forest)</li>
+            <li>Agentic payment rules engine</li>
+            <li>Real-time risk scoring per txn</li>
+            <li>AWS SageMaker model deployment</li>
+          </ul>
+          <div class="phase-cost" style="background:rgba(139,92,246,0.1);color:var(--purple)">💰 $300-1,000 / month</div>
+        </div>
+      </div>
+      <div class="phase-node" style="background:linear-gradient(135deg,var(--purple),#5b21b6)">8</div>
+      <div class="phase-content"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CORRIDORS -->
+<section id="corridors">
+  <div class="sec-tag">🌍 Global</div>
+  <h2 class="sec-title">Country Corridors</h2>
+  <p class="sec-sub">8 sending countries → Pakistan. All flows via USDC on Solana, $1 flat fee, 47 seconds.</p>
+
+  <div class="corridor-grid">
+    <div class="corridor-card">
+      <div class="corridor-flag">🇦🇪</div>
+      <div class="corridor-name">UAE → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · AED→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: Al Ansari Exchange</div>
+      <span class="corridor-status badge-green">🟢 Phase 7</span>
+    </div>
+    <div class="corridor-card">
+      <div class="corridor-flag">🇸🇦</div>
+      <div class="corridor-name">Saudi Arabia → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · SAR→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: STC Pay / Al Rajhi</div>
+      <span class="corridor-status badge-amber">🟡 Phase 7</span>
+    </div>
+    <div class="corridor-card">
+      <div class="corridor-flag">🇬🇧</div>
+      <div class="corridor-name">United Kingdom → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · GBP→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: Currencycloud (FCA)</div>
+      <span class="corridor-status badge-amber">🟡 Phase 7</span>
+    </div>
+    <div class="corridor-card">
+      <div class="corridor-flag">🇺🇸</div>
+      <div class="corridor-name">USA → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · USD→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: Circle (direct USDC)</div>
+      <span class="corridor-status badge-amber">🟡 Phase 7</span>
+    </div>
+    <div class="corridor-card">
+      <div class="corridor-flag">🇨🇦</div>
+      <div class="corridor-name">Canada → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · CAD→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: Wise Business API</div>
+      <span class="corridor-status badge-amber">🟡 Phase 7</span>
+    </div>
+    <div class="corridor-card">
+      <div class="corridor-flag">🇶🇦</div>
+      <div class="corridor-name">Qatar → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · QAR→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: Al Ansari GCC</div>
+      <span class="corridor-status badge-purple">🔵 Phase 7+</span>
+    </div>
+    <div class="corridor-card">
+      <div class="corridor-flag">🇪🇺</div>
+      <div class="corridor-name">Europe → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · EUR→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: Modulr (EU passport)</div>
+      <span class="corridor-status badge-purple">🔵 Phase 7+</span>
+    </div>
+    <div class="corridor-card">
+      <div class="corridor-flag">🇦🇺</div>
+      <div class="corridor-name">Australia → Pakistan</div>
+      <div class="corridor-fee">$1</div>
+      <div class="corridor-time">⚡ 47 seconds · AUD→USDC→PKR</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Partner: Transak (169 countries)</div>
+      <span class="corridor-status badge-purple">🔵 Phase 7+</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TO APPLY -->
+<section id="apply">
+  <div class="sec-tag">📋 Applications</div>
+  <h2 class="sec-title">Where to Apply — Complete Guide</h2>
+  <p class="sec-sub">Every license, API, and registration you need. Exact steps, costs, and links.</p>
+
+  <div class="grid3">
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(16,185,129,0.15)">🏛</div>
+        <div><div class="apply-title">SECP — Company Registration</div><div class="apply-category">Pakistan · Legal Foundation</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Go to SECP eZfile portal (eservices.secp.gov.pk)</li>
+        <li><span class="step-num">2</span>Register as Pvt. Ltd. (min 2 directors, PKR 100k capital)</li>
+        <li><span class="step-num">3</span>Submit MOA + AOA + CNIC copies</li>
+        <li><span class="step-num">4</span>Pay registration fee online</li>
+        <li><span class="step-num">5</span>Get Certificate of Incorporation (3-5 days)</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 eservices.secp.gov.pk</a>
+      <div class="apply-cost">💰 PKR 12,000-25,000 · ⏱ 3-5 days</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(245,158,11,0.15)">📋</div>
+        <div><div class="apply-title">FBR — NTN + STRN</div><div class="apply-category">Pakistan · Tax Registration</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Go to iris.fbr.gov.pk (FBR IRIS portal)</li>
+        <li><span class="step-num">2</span>Register company with SECP certificate</li>
+        <li><span class="step-num">3</span>Apply for NTN (National Tax Number)</li>
+        <li><span class="step-num">4</span>Apply for Sales Tax Registration (STRN)</li>
+        <li><span class="step-num">5</span>Activate withholding tax status</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 iris.fbr.gov.pk</a>
+      <div class="apply-cost">💰 Free · ⏱ 3-7 days</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(139,92,246,0.15)">🔒</div>
+        <div><div class="apply-title">PVARA — VASP License</div><div class="apply-category">Pakistan · Virtual Assets Act 2026</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Contact PVARA at pvara.gov.pk (new authority)</li>
+        <li><span class="step-num">2</span>Apply for NOC first (prerequisite)</li>
+        <li><span class="step-num">3</span>Apply for Categories 3,4,5,8,9 licenses</li>
+        <li><span class="step-num">4</span>Submit AML/CFT policy + business plan</li>
+        <li><span class="step-num">5</span>Appoint MLRO + compliance officer</li>
+        <li><span class="step-num">6</span>Capital adequacy proof (PKR 500M+)</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 pvara.gov.pk</a>
+      <div class="apply-cost">💰 PKR 2-10M per category · ⏱ 6-12 months</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(6,182,212,0.15)">📡</div>
+        <div><div class="apply-title">JazzCash Merchant API</div><div class="apply-category">Pakistan · Mobile Payment</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Go to jazzcash.com.pk/business</li>
+        <li><span class="step-num">2</span>Submit business registration form online</li>
+        <li><span class="step-num">3</span>Provide NTN + SECP certificate + bank details</li>
+        <li><span class="step-num">4</span>Wait for merchant ID + Integrity Salt</li>
+        <li><span class="step-num">5</span>Test in sandbox → go live</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 jazzcash.com.pk/business</a>
+      <div class="apply-cost">💰 Free (% commission per txn) · ⏱ 5-14 days</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(245,158,11,0.15)">📱</div>
+        <div><div class="apply-title">EasyPaisa Merchant API</div><div class="apply-category">Pakistan · Mobile Payment</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Visit easypaisa.com.pk → Merchant Solutions</li>
+        <li><span class="step-num">2</span>Fill merchant onboarding form</li>
+        <li><span class="step-num">3</span>Submit company docs + NTN</li>
+        <li><span class="step-num">4</span>Receive API credentials (hash key)</li>
+        <li><span class="step-num">5</span>Integrate MD5 hash authentication</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 easypaisa.com.pk/merchant</a>
+      <div class="apply-cost">💰 Free + commission · ⏱ 7-14 days</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(16,185,129,0.15)">⚡</div>
+        <div><div class="apply-title">Raast P2M via 1Link</div><div class="apply-category">Pakistan · SBP Real-Time Rail</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Must have banking partner (Meezan/HBL)</li>
+        <li><span class="step-num">2</span>Bank applies to 1Link on your behalf</li>
+        <li><span class="step-num">3</span>Technical integration: ISO 20022 messages</li>
+        <li><span class="step-num">4</span>Get merchant ID for dynamic QR generation</li>
+        <li><span class="step-num">5</span>EMVCo QR standard (scan with any PK bank app)</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 1link.net.pk</a>
+      <div class="apply-cost">💰 Via bank partner · ⏱ 1-3 months</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(59,130,246,0.15)">💳</div>
+        <div><div class="apply-title">Safepay — Card Payments</div><div class="apply-category">Pakistan · PCI DSS Cards</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Register at safepay.pk</li>
+        <li><span class="step-num">2</span>Submit business verification docs</li>
+        <li><span class="step-num">3</span>Get API keys (test + production)</li>
+        <li><span class="step-num">4</span>Integrate iframe checkout (PCI SAQ-A)</li>
+        <li><span class="step-num">5</span>Go live (no PCI compliance needed on your end)</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 safepay.pk/developers</a>
+      <div class="apply-cost">💰 2.5% + PKR 15/txn · ⏱ 2-5 days</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(6,182,212,0.15)">⬡</div>
+        <div><div class="apply-title">Circle API — USDC</div><div class="apply-category">USA · Stablecoin Infrastructure</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Register at developers.circle.com</li>
+        <li><span class="step-num">2</span>KYB verification (company + directors)</li>
+        <li><span class="step-num">3</span>Get API key for sandbox</li>
+        <li><span class="step-num">4</span>Install: npm install @circle-fin/circle-sdk</li>
+        <li><span class="step-num">5</span>Production: additional compliance review</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 developers.circle.com</a>
+      <div class="apply-cost">💰 Free API · Revenue on spread · ⏱ 1-2 weeks</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(139,92,246,0.15)">🔐</div>
+        <div><div class="apply-title">Privy.io — MPC Wallets</div><div class="apply-category">USA · Wallet Custody</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Sign up at privy.io/docs</li>
+        <li><span class="step-num">2</span>Create project → get App ID</li>
+        <li><span class="step-num">3</span>npm install @privy-io/server-auth</li>
+        <li><span class="step-num">4</span>Create wallets per user (non-custodial MPC)</li>
+        <li><span class="step-num">5</span>Upgrade to Fireblocks at 10k+ users</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 privy.io</a>
+      <div class="apply-cost">💰 Free 0-1000 wallets · $0.05/wallet after · ⏱ Same day</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(239,68,68,0.15)">🛡</div>
+        <div><div class="apply-title">Chainalysis KYT — Blockchain AML</div><div class="apply-category">USA · Compliance</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Contact sales at chainalysis.com</li>
+        <li><span class="step-num">2</span>Demo + compliance review</li>
+        <li><span class="step-num">3</span>Sign enterprise agreement</li>
+        <li><span class="step-num">4</span>Get API key + webhook endpoint</li>
+        <li><span class="step-num">5</span>Alternative: Elliptic ($200/mo startup plan)</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 chainalysis.com/kyt</a>
+      <div class="apply-cost">💰 $500/month startup · ⏱ 1-2 weeks</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(245,158,11,0.15)">⚖</div>
+        <div><div class="apply-title">Comply Advantage — Sanctions</div><div class="apply-category">UK · AML Screening</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Register at complyadvantage.com</li>
+        <li><span class="step-num">2</span>Start free trial (100 searches)</li>
+        <li><span class="step-num">3</span>Choose plan: OFAC + UN + EU lists</li>
+        <li><span class="step-num">4</span>API integration (REST)</li>
+        <li><span class="step-num">5</span>Set up real-time webhook alerts</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 complyadvantage.com</a>
+      <div class="apply-cost">💰 $200/month · ⏱ Same day</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(16,185,129,0.15)">🌐</div>
+        <div><div class="apply-title">Notabene — FATF Travel Rule</div><div class="apply-category">Global · VASP Compliance</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Apply at notabene.id</li>
+        <li><span class="step-num">2</span>Register as VASP (use PVARA license)</li>
+        <li><span class="step-num">3</span>Integrate travel rule API</li>
+        <li><span class="step-num">4</span>Tag sender + receiver to every transfer</li>
+        <li><span class="step-num">5</span>Required for all transfers $1000+</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 notabene.id</a>
+      <div class="apply-cost">💰 $500/month · ⏱ 1-2 weeks</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(6,182,212,0.15)">👁</div>
+        <div><div class="apply-title">NADRA Nishaan — Pakistan KYC</div><div class="apply-category">Pakistan · Identity Verification</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Apply at nadra.gov.pk/nishaan</li>
+        <li><span class="step-num">2</span>Submit company + PVARA license docs</li>
+        <li><span class="step-num">3</span>Sign data sharing agreement</li>
+        <li><span class="step-num">4</span>Get API credentials (sandbox)</li>
+        <li><span class="step-num">5</span>Integrate CNIC + biometric verification</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 nadra.gov.pk</a>
+      <div class="apply-cost">💰 Per-query pricing · ⏱ 2-4 weeks</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(245,158,11,0.15)">🏙</div>
+        <div><div class="apply-title">DIFC / ADGM — UAE License</div><div class="apply-category">UAE · Money Services</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Choose: DIFC (dubai.ae) or ADGM (abudhabi)</li>
+        <li><span class="step-num">2</span>Apply for Category 3C or 3D license</li>
+        <li><span class="step-num">3</span>Submit business plan + AML policy</li>
+        <li><span class="step-num">4</span>Capital requirement: $500k-2M</li>
+        <li><span class="step-num">5</span>Appoint Compliance Officer (local UAE)</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 difc.ae/business/licensing</a>
+      <div class="apply-cost">💰 AED 50,000-200,000 · ⏱ 3-6 months</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(59,130,246,0.15)">🇬🇧</div>
+        <div><div class="apply-title">FCA — UK EMI License</div><div class="apply-category">UK · Financial Conduct Authority</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Register at register.fca.org.uk</li>
+        <li><span class="step-num">2</span>Apply for EMI (Electronic Money Institution)</li>
+        <li><span class="step-num">3</span>Submit 3-year business plan + financials</li>
+        <li><span class="step-num">4</span>Capital requirement: €350k minimum</li>
+        <li><span class="step-num">5</span>Alternative: partner with Railsr / Currencycloud</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 fca.org.uk/firms/apply</a>
+      <div class="apply-cost">💰 £25,000 fee · ⏱ 12-18 months</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(16,185,129,0.15)">🕌</div>
+        <div><div class="apply-title">Sharia Supervisory Board</div><div class="apply-category">Pakistan · Islamic Finance</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Contact Pakistan Council of Islamic Ideology</li>
+        <li><span class="step-num">2</span>Engage 3 qualified Sharia scholars</li>
+        <li><span class="step-num">3</span>Get Mudaraba savings product certified</li>
+        <li><span class="step-num">4</span>Get Murabaha lending product certified</li>
+        <li><span class="step-num">5</span>Annual Sharia audit required</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 islamiideology.gov.pk</a>
+      <div class="apply-cost">💰 PKR 500k-2M/year · ⏱ 3-6 months</div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-header">
+        <div class="apply-icon" style="background:rgba(139,92,246,0.15)">🏦</div>
+        <div><div class="apply-title">Meezan Bank — Corporate Account</div><div class="apply-category">Pakistan · Banking Partner</div></div>
+      </div>
+      <ul class="apply-steps">
+        <li><span class="step-num">1</span>Visit Meezan Bank corporate branch</li>
+        <li><span class="step-num">2</span>Submit company docs + SECP cert</li>
+        <li><span class="step-num">3</span>Open current account + CMA accounts</li>
+        <li><span class="step-num">4</span>Set up Client Money Accounts (per BPRD 10/2026)</li>
+        <li><span class="step-num">5</span>Negotiate Raast + SWIFT access</li>
+      </ul>
+      <a href="#" class="apply-link">🔗 meezanbank.com/corporate</a>
+      <div class="apply-cost">💰 PKR 100k min deposit · ⏱ 2-4 weeks</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="techstack">
+  <div class="sec-tag">⚙ Stack</div>
+  <h2 class="sec-title">Complete 10-Layer Tech Stack</h2>
+  <p class="sec-sub">Every technology, every layer — from React frontend to Solana blockchain to AWS infrastructure.</p>
+
+  <div class="stack-layers">
+
+    <div class="layer" style="background:rgba(59,130,246,0.04);border-color:rgba(59,130,246,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(59,130,246,0.15)">🎨</div>
+        <div class="layer-title">Layer 1 — Frontend (Already Built)</div>
+        <div class="layer-tags"><span class="badge badge-green">✅ Done</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">React 19</span><span class="tech-tag">TypeScript 6</span><span class="tech-tag">Vite 8</span>
+        <span class="tech-tag">Ant Design 6.4.2</span><span class="tech-tag">Recharts 3.8</span><span class="tech-tag">React Router DOM 7</span>
+        <span class="tech-tag">Zustand (state)</span><span class="tech-tag">React Hook Form</span><span class="tech-tag">Zod validation</span>
+        <span class="tech-tag">Axios</span><span class="tech-tag">socket.io-client</span><span class="tech-tag">Framer Motion</span>
+        <span class="tech-tag">qrcode.react</span><span class="tech-tag">Vercel deploy</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(139,92,246,0.04);border-color:rgba(139,92,246,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(139,92,246,0.15)">🛠</div>
+        <div class="layer-title">Layer 2 — Backend Core (NestJS)</div>
+        <div class="layer-tags"><span class="badge badge-amber">Phase 1</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">NestJS 10</span><span class="tech-tag">Node.js 20 LTS</span><span class="tech-tag">Fastify adapter</span>
+        <span class="tech-tag">Prisma 5 ORM</span><span class="tech-tag">PostgreSQL 16</span><span class="tech-tag">Redis 7</span>
+        <span class="tech-tag">BullMQ</span><span class="tech-tag">@nestjs/swagger</span><span class="tech-tag">@nestjs/jwt</span>
+        <span class="tech-tag">Passport.js</span><span class="tech-tag">class-validator</span><span class="tech-tag">Winston logs</span>
+        <span class="tech-tag">Railway.app deploy</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(6,182,212,0.04);border-color:rgba(6,182,212,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(6,182,212,0.15)">⬡</div>
+        <div class="layer-title">Layer 3 — Stablecoin + Blockchain</div>
+        <div class="layer-tags"><span class="badge badge-amber">Phase 4</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">USDC (Circle)</span><span class="tech-tag">USD1 (World Liberty)</span><span class="tech-tag">Solana network</span>
+        <span class="tech-tag">@solana/web3.js</span><span class="tech-tag">@solana/spl-token</span><span class="tech-tag">ethers.js v6</span>
+        <span class="tech-tag">@circle-fin/circle-sdk</span><span class="tech-tag">Privy.io MPC</span><span class="tech-tag">Fireblocks (scale)</span>
+        <span class="tech-tag">Helius RPC</span><span class="tech-tag">Infura (ETH)</span><span class="tech-tag">CoinGecko rates</span>
+        <span class="tech-tag">Transak on-ramp</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(16,185,129,0.15)">🆔</div>
+        <div class="layer-title">Layer 4 — KYC / Identity Stack</div>
+        <div class="layer-tags"><span class="badge badge-amber">Phase 5</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">NADRA Nishaan API</span><span class="tech-tag">SECP eZfile KYB</span><span class="tech-tag">Persona.com</span>
+        <span class="tech-tag">Sumsub ($1-3/verify)</span><span class="tech-tag">iProov liveness</span><span class="tech-tag">AWS Textract OCR</span>
+        <span class="tech-tag">FaceTec anti-spoof</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(239,68,68,0.04);border-color:rgba(239,68,68,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(239,68,68,0.15)">🛡</div>
+        <div class="layer-title">Layer 5 — AML / Compliance Stack</div>
+        <div class="layer-tags"><span class="badge badge-amber">Phase 5</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">Chainalysis KYT</span><span class="tech-tag">Elliptic (startup)</span><span class="tech-tag">Comply Advantage</span>
+        <span class="tech-tag">OFAC SDN screening</span><span class="tech-tag">UN + EU sanctions</span><span class="tech-tag">Notabene Travel Rule</span>
+        <span class="tech-tag">FIU Pakistan STR</span><span class="tech-tag">World-Check PEP</span><span class="tech-tag">Custom ML risk score</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(245,158,11,0.04);border-color:rgba(245,158,11,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(245,158,11,0.15)">🇵🇰</div>
+        <div class="layer-title">Layer 6 — Pakistan Payment Rails</div>
+        <div class="layer-tags"><span class="badge badge-amber">Phase 2</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">Raast P2M (1Link)</span><span class="tech-tag">JazzCash HMAC</span><span class="tech-tag">EasyPaisa MD5</span>
+        <span class="tech-tag">Safepay cards</span><span class="tech-tag">HBL PayConnect</span><span class="tech-tag">FBR PRAL API</span>
+        <span class="tech-tag">EOBI REST API</span><span class="tech-tag">ISO 20022 msgs</span><span class="tech-tag">EMVCo QR</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(249,115,22,0.04);border-color:rgba(249,115,22,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(249,115,22,0.15)">🌍</div>
+        <div class="layer-title">Layer 7 — International Payment Rails</div>
+        <div class="layer-tags"><span class="badge badge-purple">Phase 7</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">Al Ansari (UAE)</span><span class="tech-tag">Currencycloud (UK)</span><span class="tech-tag">Wise Business (CA)</span>
+        <span class="tech-tag">Circle USDC (USA)</span><span class="tech-tag">Modulr (EU)</span><span class="tech-tag">Transak (169 countries)</span>
+        <span class="tech-tag">Railsr (UK embedded)</span><span class="tech-tag">SWIFT via Meezan</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(59,130,246,0.04);border-color:rgba(59,130,246,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(59,130,246,0.15)">☁</div>
+        <div class="layer-title">Layer 8 — Infrastructure / AWS</div>
+        <div class="layer-tags"><span class="badge badge-amber">Phase 1+</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">AWS ap-south-1</span><span class="tech-tag">ECS Fargate</span><span class="tech-tag">RDS PostgreSQL</span>
+        <span class="tech-tag">ElastiCache Redis</span><span class="tech-tag">Cloudflare R2</span><span class="tech-tag">Cloudflare CDN</span>
+        <span class="tech-tag">GitHub Actions CI/CD</span><span class="tech-tag">AWS Secrets Manager</span><span class="tech-tag">Datadog APM</span>
+        <span class="tech-tag">PagerDuty alerts</span><span class="tech-tag">Docker + Compose</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(139,92,246,0.04);border-color:rgba(139,92,246,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(139,92,246,0.15)">🤖</div>
+        <div class="layer-title">Layer 9 — AI / ML Stack</div>
+        <div class="layer-tags"><span class="badge badge-purple">Phase 8</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">Python FastAPI</span><span class="tech-tag">scikit-learn</span><span class="tech-tag">Isolation Forest</span>
+        <span class="tech-tag">AWS SageMaker</span><span class="tech-tag">Hugging Face</span><span class="tech-tag">OpenAI API</span>
+        <span class="tech-tag">Pinecone vector DB</span><span class="tech-tag">Credit scoring model</span>
+      </div>
+    </div>
+
+    <div class="layer" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.2)" onclick="toggleLayer(this)">
+      <div class="layer-header">
+        <div class="layer-icon" style="background:rgba(16,185,129,0.15)">🔔</div>
+        <div class="layer-title">Layer 10 — Notifications Stack</div>
+        <div class="layer-tags"><span class="badge badge-amber">Phase 2</span></div>
+        <span class="layer-toggle">▼</span>
+      </div>
+      <div class="layer-body">
+        <span class="tech-tag">WhatsApp Business API</span><span class="tech-tag">Jazz SMS Gateway</span><span class="tech-tag">Resend.com email</span>
+        <span class="tech-tag">FCM push (Firebase)</span><span class="tech-tag">Socket.io real-time</span><span class="tech-tag">Telenor SMS backup</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section id="legal">
+  <div class="sec-tag">⚖ Legal</div>
+  <h2 class="sec-title">Legal Requirements by Jurisdiction</h2>
+  <p class="sec-sub">Every country's legal checklist. Pakistan is primary, UAE is launch corridor, UK/USA for scale.</p>
+
+  <div class="legal-grid">
+    <div class="legal-card" style="border-color:rgba(16,185,129,0.3)">
+      <div class="legal-flag">🇵🇰</div>
+      <div class="legal-country">Pakistan — Primary Market</div>
+      <ul class="legal-items">
+        <li><span class="legal-dot" style="background:rgba(16,185,129,0.15);color:var(--green)">✓</span>SECP Pvt. Ltd. incorporation</li>
+        <li><span class="legal-dot" style="background:rgba(16,185,129,0.15);color:var(--green)">✓</span>FBR NTN + STRN registration</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>PVARA VASP License (5 categories)</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>SBP PSO/PSP License</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>MLRO appointment (AMLA 2010)</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>Sharia Supervisory Board</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>PDPA Data Protection Officer</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>Client Money Accounts (BPRD 10/2026)</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>PCI DSS SAQ-A self-assessment</li>
+      </ul>
+    </div>
+
+    <div class="legal-card" style="border-color:rgba(245,158,11,0.3)">
+      <div class="legal-flag">🇦🇪</div>
+      <div class="legal-country">UAE — First Corridor</div>
+      <ul class="legal-items">
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>DIFC Category 3C/3D License</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>ADGM alternative (Abu Dhabi)</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>CBUAE MSB License</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>UAE AML Federal Law compliance</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>UAE Data Protection Law</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>Local UAE compliance officer</li>
+        <li><span class="legal-dot" style="background:rgba(245,158,11,0.1);color:var(--gold)">→</span>Capital: AED 50k-200k</li>
+      </ul>
+    </div>
+
+    <div class="legal-card" style="border-color:rgba(59,130,246,0.3)">
+      <div class="legal-flag">🇬🇧</div>
+      <div class="legal-country">United Kingdom</div>
+      <ul class="legal-items">
+        <li><span class="legal-dot" style="background:rgba(59,130,246,0.1);color:var(--blue)">→</span>FCA EMI License (Electronic Money)</li>
+        <li><span class="legal-dot" style="background:rgba(59,130,246,0.1);color:var(--blue)">→</span>Capital: €350,000 minimum</li>
+        <li><span class="legal-dot" style="background:rgba(59,130,246,0.1);color:var(--blue)">→</span>UK MLRO + Board member</li>
+        <li><span class="legal-dot" style="background:rgba(59,130,246,0.1);color:var(--blue)">→</span>UK GDPR compliance</li>
+        <li><span class="legal-dot" style="background:rgba(59,130,246,0.1);color:var(--blue)">→</span>OR: Partner with Railsr/Currencycloud</li>
+        <li><span class="legal-dot" style="background:rgba(59,130,246,0.1);color:var(--blue)">→</span>Timeline: 12-18 months</li>
+      </ul>
+    </div>
+
+    <div class="legal-card" style="border-color:rgba(239,68,68,0.3)">
+      <div class="legal-flag">🇺🇸</div>
+      <div class="legal-country">USA</div>
+      <ul class="legal-items">
+        <li><span class="legal-dot" style="background:rgba(239,68,68,0.1);color:var(--red)">→</span>FinCEN MSB Registration</li>
+        <li><span class="legal-dot" style="background:rgba(239,68,68,0.1);color:var(--red)">→</span>State MTL (Money Transmitter License)</li>
+        <li><span class="legal-dot" style="background:rgba(239,68,68,0.1);color:var(--red)">→</span>OFAC compliance (all 50 states)</li>
+        <li><span class="legal-dot" style="background:rgba(239,68,68,0.1);color:var(--red)">→</span>BSA / AML program</li>
+        <li><span class="legal-dot" style="background:rgba(239,68,68,0.1);color:var(--red)">→</span>OR: Use Circle (holds all US licenses)</span></li>
+        <li><span class="legal-dot" style="background:rgba(239,68,68,0.1);color:var(--red)">→</span>Recommended: Circle partnership first</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE -->
+<section id="revenue">
+  <div class="sec-tag">💰 Revenue</div>
+  <h2 class="sec-title">Revenue Model</h2>
+  <p class="sec-sub">7 revenue streams. Remittance is the biggest at launch. Lending is the biggest at scale.</p>
+
+  <div class="revenue-grid">
+    <div class="rev-card">
+      <div class="rev-icon">💸</div>
+      <div class="rev-name">Remittance Fee</div>
+      <div class="rev-amount">$1</div>
+      <div class="rev-period">Per cross-border transfer</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--text3)">10k/month = $120k/year</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-icon">💱</div>
+      <div class="rev-name">FX Spread</div>
+      <div class="rev-amount">0.5%</div>
+      <div class="rev-period">On USDC↔PKR conversion</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--text3)">$10M volume = $50k/month</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-icon">🏦</div>
+      <div class="rev-name">Mudaraba Savings</div>
+      <div class="rev-amount">2%</div>
+      <div class="rev-period">Profit-sharing spread</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--text3)">Sharia-compliant deposits</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-icon">📊</div>
+      <div class="rev-name">Murabaha Lending</div>
+      <div class="rev-amount">8-15%</div>
+      <div class="rev-period">Annual profit rate</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--text3)">AI credit-scored merchants</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-icon">💳</div>
+      <div class="rev-name">POS SaaS Fee</div>
+      <div class="rev-amount">PKR 3k</div>
+      <div class="rev-period">Per merchant/month</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--text3)">1000 merchants = $10k/mo</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-icon">🔄</div>
+      <div class="rev-name">Payment MDR</div>
+      <div class="rev-amount">0.5%</div>
+      <div class="rev-period">Merchant Discount Rate</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--text3)">On Raast + card volume</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-icon">🏢</div>
+      <div class="rev-name">Enterprise HRMS</div>
+      <div class="rev-amount">$200</div>
+      <div class="rev-period">Per company/month</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--text3)">100 companies = $20k/mo</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL COMMANDS -->
+<section id="install">
+  <div class="sec-tag">⌨ Commands</div>
+  <h2 class="sec-title">Install Commands</h2>
+  <p class="sec-sub">Copy-paste commands to get started immediately. Click any block to copy.</p>
+
+  <div class="install-tabs">
+    <button class="tab-btn active" onclick="switchTab('phase0')">Phase 0 — Demo</button>
+    <button class="tab-btn" onclick="switchTab('backend')">Phase 1 — Backend</button>
+    <button class="tab-btn" onclick="switchTab('blockchain')">Phase 4 — Stablecoin</button>
+    <button class="tab-btn" onclick="switchTab('compliance')">Phase 5 — Compliance</button>
+  </div>
+
+  <div id="code-phase0" class="code-block active">
+    <button class="copy-btn" onclick="copyCode('phase0')">Copy</button>
+<span class="comment"># Phase 0 — Demo Polish (run inside pos-system-ts)</span>
+<span class="cmd">npm install</span> zustand axios qrcode.react react-to-print canvas-confetti
+<span class="cmd">npm install</span> xlsx jspdf jspdf-autotable
+<span class="cmd">npm install</span> react-hook-form zod @hookform/resolvers
+<span class="cmd">npm install</span> react-hot-toast socket.io-client framer-motion
+
+<span class="comment"># Start dev server</span>
+<span class="cmd">npm run dev</span>
+
+<span class="comment"># Open blueprint (after server starts)</span>
+<span class="comment"># http://localhost:5173/blueprint</span>
+  </div>
+
+  <div id="code-backend" class="code-block">
+    <button class="copy-btn" onclick="copyCode('backend')">Copy</button>
+<span class="comment"># Phase 1 — NestJS Backend Setup</span>
+<span class="cmd">npm install -g @nestjs/cli</span>
+<span class="cmd">nest new nexus-backend</span>
+<span class="cmd">cd nexus-backend</span>
+
+<span class="comment"># Core packages</span>
+<span class="cmd">npm install</span> @nestjs/core @nestjs/common @nestjs/platform-fastify
+<span class="cmd">npm install</span> @nestjs/jwt @nestjs/passport passport passport-jwt
+<span class="cmd">npm install</span> @nestjs/swagger swagger-ui-express
+<span class="cmd">npm install</span> @nestjs/websockets @nestjs/platform-socket.io
+<span class="cmd">npm install</span> @nestjs/config @nestjs/bull bull bullmq
+
+<span class="comment"># Database</span>
+<span class="cmd">npm install</span> @prisma/client prisma
+<span class="cmd">npm install</span> class-validator class-transformer
+<span class="cmd">npm install</span> bcrypt ioredis axios winston nest-winston dayjs uuid
+
+<span class="comment"># Initialize Prisma</span>
+<span class="cmd">npx prisma init</span>
+<span class="cmd">npx prisma migrate dev --name init</span>
+<span class="cmd">npx prisma generate</span>
+  </div>
+
+  <div id="code-blockchain" class="code-block">
+    <button class="copy-btn" onclick="copyCode('blockchain')">Copy</button>
+<span class="comment"># Phase 4 — Stablecoin + Blockchain</span>
+<span class="cmd">npm install</span> @solana/web3.js @solana/spl-token
+<span class="cmd">npm install</span> ethers
+<span class="cmd">npm install</span> @circle-fin/circle-sdk
+<span class="cmd">npm install</span> @privy-io/server-auth
+
+<span class="comment"># Exchange rates (free tier)</span>
+<span class="comment"># CoinGecko: https://api.coingecko.com/api/v3/simple/price</span>
+<span class="comment"># No API key needed for free tier</span>
+
+<span class="comment"># Solana RPC (Helius free 100k req/day)</span>
+<span class="comment"># Register at helius.dev → get RPC URL</span>
+
+<span class="comment"># Test Solana connection</span>
+<span class="cmd">node -e</span> "const{Connection}=require('@solana/web3.js');const c=new Connection('https://api.devnet.solana.com');c.getVersion().then(v=>console.log('Solana version:',v))"
+  </div>
+
+  <div id="code-compliance" class="code-block">
+    <button class="copy-btn" onclick="copyCode('compliance')">Copy</button>
+<span class="comment"># Phase 5 — Compliance Stack APIs</span>
+
+<span class="comment"># 1. Comply Advantage (sanctions)</span>
+<span class="comment"># Register at complyadvantage.com → free trial → get API key</span>
+<span class="comment"># POST https://api.complyadvantage.com/searches</span>
+
+<span class="comment"># 2. Notabene (Travel Rule)</span>
+<span class="comment"># Register at notabene.id → VASP onboarding</span>
+<span class="comment"># Required: PVARA license number</span>
+
+<span class="comment"># 3. Elliptic (blockchain AML — cheaper startup option)</span>
+<span class="comment"># Contact elliptic.co/startup-program</span>
+<span class="comment"># API: POST https://aml-api.elliptic.co/v2/wallet/synchronous</span>
+
+<span class="comment"># 4. NADRA Nishaan (Pakistan KYC)</span>
+<span class="comment"># Apply at nadra.gov.pk → required: PVARA license first</span>
+<span class="comment"># API: GET https://nishaan.nadra.gov.pk/api/verify/{cnic}</span>
+
+<span class="comment"># 5. Sumsub (international KYC — cheaper alternative)</span>
+<span class="cmd">npm install</span> @sumsub/websdk-react
+<span class="comment"># Register at sumsub.com → $1-3 per verification</span>
+  </div>
+</section>
+
+<!-- COMPETITIVE TABLE -->
+<section id="compare">
+  <div class="sec-tag">📊 Comparison</div>
+  <h2 class="sec-title">Competitive Advantage</h2>
+  <p class="sec-sub">Indus Nexus vs traditional players and neobanks.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Indus Nexus</th>
+          <th>Western Union</th>
+          <th>Remitly</th>
+          <th>Traditional Bank</th>
+          <th>Easypaisa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Transfer Time</td><td class="win">47 seconds</td><td class="lose">3-5 days</td><td class="mid">1-2 days</td><td class="lose">3-7 days</td><td class="mid">Domestic only</td></tr>
+        <tr><td>Fee (per $100)</td><td class="win">$1 flat</td><td class="lose">$32</td><td class="mid">$3-15</td><td class="lose">$25-40</td><td class="mid">N/A</td></tr>
+        <tr><td>Blockchain rails</td><td class="win">USDC Solana</td><td class="lose">No</td><td class="lose">No</td><td class="lose">No</td><td class="lose">No</td></tr>
+        <tr><td>Sharia compliant</td><td class="win">Yes (certified)</td><td class="lose">No</td><td class="lose">No</td><td class="mid">Partial</td><td class="lose">No</td></tr>
+        <tr><td>Pakistan regulation</td><td class="win">PVARA + SBP</td><td class="mid">Partial</td><td class="mid">Partial</td><td class="win">Yes</td><td class="win">Yes</td></tr>
+        <tr><td>POS + HRMS + ERP</td><td class="win">All-in-one</td><td class="lose">No</td><td class="lose">No</td><td class="lose">No</td><td class="lose">No</td></tr>
+        <tr><td>AI credit scoring</td><td class="win">Yes (Phase 8)</td><td class="lose">No</td><td class="mid">Limited</td><td class="mid">Limited</td><td class="lose">No</td></tr>
+        <tr><td>Corridors</td><td class="win">8 countries</td><td class="win">200+</td><td class="mid">17</td><td class="win">SWIFT global</td><td class="lose">Pakistan only</td></tr>
+        <tr><td>Monthly fee</td><td class="win">PKR 3,000</td><td class="lose">High</td><td class="mid">$10-30</td><td class="lose">High</td><td class="mid">Free</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div style="font-size:32px;margin-bottom:16px">⬡</div>
+  <div style="font-size:20px;font-weight:800;margin-bottom:8px"><strong>Indus Nexus</strong> — Pakistan's Fintech Unicorn</div>
+  <div style="font-size:14px;margin-bottom:24px">Blueprint v1.0 · May 2026 · Confidential — Client Presentation</div>
+  <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;font-size:13px">
+    <span>🇵🇰 SBP Regulated</span>
+    <span>⬡ PVARA Licensed</span>
+    <span>🕌 Sharia Compliant</span>
+    <span>🔒 FATF Compliant</span>
+    <span>⚡ Solana Powered</span>
+  </div>
+</footer>
+
+<script>
+// SCROLL PROGRESS
+window.addEventListener('scroll',()=>{
+  const p=document.getElementById('progress');
+  const h=document.documentElement;
+  const pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  p.style.width=pct+'%';
+});
+
+// NAV ACTIVE STATE
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(s.getBoundingClientRect().top<=80)cur=s.id});
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+});
+
+// TOGGLE LAYER
+function toggleLayer(el){el.classList.toggle('open')}
+
+// SWITCH TAB
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.remove('active'));
+  document.querySelectorAll('.code-block').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('code-'+id).classList.add('active');
+}
+
+// COPY CODE
+function copyCode(id){
+  const el=document.getElementById('code-'+id);
+  const text=el.innerText.replace(/Copy\n/,'');
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=el.querySelector('.copy-btn');
+    btn.textContent='Copied!';
+    btn.style.color='var(--green)';
+    setTimeout(()=>{btn.textContent='Copy';btn.style.color=''},2000);
+  });
+}
+
+// ENTRANCE ANIMATIONS
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
+},{threshold:0.1});
+document.querySelectorAll('.card,.apply-card,.phase-card,.corridor-card,.rev-card,.layer,.legal-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s,transform 0.5s';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
